@@ -1,0 +1,9 @@
+.feedback-button {
+    margin: 10px;
+    width: 80px;
+}
+
+.feedback-value {
+    display: flex;
+    flex-direction: column;
+}
