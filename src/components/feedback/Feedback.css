@@ -1,6 +1,7 @@
 .feedback-button {
     margin: 10px;
     width: 80px;
+    cursor: pointer;
 }
 
 .feedback-value {

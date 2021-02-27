@@ -29,8 +29,7 @@ class Feedback extends Component {
 
     countTotalFeedback = () => {
         const { good, neutral, bad } = this.state;
-        const total = good + neutral + bad;
-        return total;
+        return good + neutral + bad;        
     };
 
     countPositiveFeedbackPercentage = () => {
@@ -51,8 +50,11 @@ class Feedback extends Component {
                     onLeaveFeedbackNeutral={this.handleIncrementNeutral}
                     onLeaveFeedbackBad={this.handleIncrementBad}
                 />
-                
-                <h2>Statistics</h2>       
+
+                <Title
+                    title='Statistics'
+                />
+                       
                 <Statistics
                     good={this.state.good}
                     neutral={this.state.neutral}
