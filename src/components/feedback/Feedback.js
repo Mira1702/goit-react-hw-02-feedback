@@ -3,8 +3,6 @@ import Title from '../title/Title';
 import FeedbackOptions from '../feedbackOptions/FeedbackOptions';
 import Statistics from '../statistics/Statistics';
 
-import { FEEDBACK_OPTIONS } from '../data/constans';
-
 import './Feedback.css';
 
 class Feedback extends Component {
@@ -14,22 +12,11 @@ class Feedback extends Component {
         bad: 0
     };
 
-    handleIncrement = ({ target }) => {
-        const {feedback} = target.dataset
+    handleIncrement = element => {        
         this.setState((prevState) => ({           
-            [feedback]: prevState[feedback] + 1 
+            [element.target.name]: prevState[element.target.name] + 1 
         }));
-    }
-    // handleIncrementNeutral = () => {
-    //     this.setState(prevState => ({           
-    //         neutral: prevState.neutral + 1,           
-    //     }));
-    // }
-    // handleIncrementBad = () => {
-    //     this.setState(prevState => ({           
-    //         bad: prevState.bad + 1,           
-    //     }));
-    // }
+    }    
 
     countTotalFeedback = () => {
         const { good, neutral, bad } = this.state;
@@ -50,7 +37,6 @@ class Feedback extends Component {
                     title='Please leave feedback'
                 />
                 <FeedbackOptions                    
-                    options={FEEDBACK_OPTIONS}
                     onLeaveFeedback={this.handleIncrement}                    
                 />
                 <Title
