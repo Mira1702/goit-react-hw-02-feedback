@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Title from '../title/Title';
 import FeedbackOptions from '../feedbackOptions/FeedbackOptions';
 import Statistics from '../statistics/Statistics';
+
+import { FEEDBACK_OPTIONS } from '../data/constans';
+
 import './Feedback.css';
 
 class Feedback extends Component {
@@ -11,21 +14,22 @@ class Feedback extends Component {
         bad: 0
     };
 
-    handleIncrementGood = () => {
-        this.setState(prevState => ({           
-            good: prevState.good + 1,           
+    handleIncrement = ({ target }) => {
+        const {feedback} = target.dataset
+        this.setState((prevState) => ({           
+            [feedback]: prevState[feedback] + 1 
         }));
     }
-    handleIncrementNeutral = () => {
-        this.setState(prevState => ({           
-            neutral: prevState.neutral + 1,           
-        }));
-    }
-    handleIncrementBad = () => {
-        this.setState(prevState => ({           
-            bad: prevState.bad + 1,           
-        }));
-    }
+    // handleIncrementNeutral = () => {
+    //     this.setState(prevState => ({           
+    //         neutral: prevState.neutral + 1,           
+    //     }));
+    // }
+    // handleIncrementBad = () => {
+    //     this.setState(prevState => ({           
+    //         bad: prevState.bad + 1,           
+    //     }));
+    // }
 
     countTotalFeedback = () => {
         const { good, neutral, bad } = this.state;
@@ -45,12 +49,10 @@ class Feedback extends Component {
                 <Title
                     title='Please leave feedback'
                 />
-                <FeedbackOptions
-                    onLeaveFeedbackGood={this.handleIncrementGood}
-                    onLeaveFeedbackNeutral={this.handleIncrementNeutral}
-                    onLeaveFeedbackBad={this.handleIncrementBad}
+                <FeedbackOptions                    
+                    options={FEEDBACK_OPTIONS}
+                    onLeaveFeedback={this.handleIncrement}                    
                 />
-
                 <Title
                     title='Statistics'
                 />
